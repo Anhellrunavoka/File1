@@ -1,6 +1,11 @@
 ﻿#include <iostream>
 #include <fstream>
+#include <string>
 using namespace std;
+struct People {
+    string Prizv;
+    string phone;
+};
 int main()
 {
     cout << "Work with files\n";
@@ -80,24 +85,41 @@ int main()
     write.close();
     file.close();
     cout << "End";*/
-    ifstream file("text.txt");
+    //ifstream file("text.txt");
+    //if (!file) {
+    //    cout << "File not find\n";
+    //    return 1;
+    //}
+    //char txt[20];
+    //string space = "";
+    //while (file) {
+    //    file.getline(txt, 20);
+    //    //cout << txt << endl;
+    //    for (char i : txt) {
+    //        if (isdigit(i)) {
+    //            space += i;
+    //        }
+    //        if (i == ' ') {
+    //            cout << space << ' ';
+    //            space = "";
+    //        }
+    //    }
+    //} 
+    ofstream file("abonement.txt");
     if (!file) {
-        cout << "File not find\n";
-        return 1;
+            cout << "File not find\n";
+            return 1;
     }
-    char txt[20];
-    string space = "";
-    while (file) {
-        file.getline(txt, 20);
-        //cout << txt << endl;
-        for (char i : txt) {
-            if (isdigit(i)) {
-                space += i;
-            }
-            if (i == ' ') {
-                cout << space << ' ';
-                space = "";
-            }
-        }
-    } 
+    int ans,count=1;
+    People Abonents[5];
+    do {
+        cout << "Input " << count << " abonent: ";
+        getline(cin, Abonents->Prizv);
+        getline(cin, Abonents->phone);
+        file <<count<<") " << Abonents->Prizv << ' ' << Abonents->phone << endl;
+        cout << "Do you have abonents Yes[1] No[2]: ";
+        cin >> ans;
+        count++;
+        cin.ignore();
+    } while (ans==1);
 }
